@@ -48,15 +48,30 @@ void loop() {
     int rsw34 = digitalRead(sw34);
    
     if(rsw35 == 0 && rsw34 == 0){
+      int rsw36 = digitalRead(sw36);
+      while(rsw36){
+        pausa();
+      }
        
       while(true){
+        int rsw36 = digitalRead(sw36);
+        while(rsw36){
+        pausa();
+      }
 
         while(digitalRead(s3) == 0){
-      
+          int rsw36 = digitalRead(sw36);
+          while(rsw36){
+        pausa();
+      }
           digitalWrite(izquierda, 1);
         }
         digitalWrite(izquierda, 0);
         while(digitalRead(s1) == 0){
+          int rsw36 = digitalRead(sw36);
+          while(rsw36){
+        pausa();
+      }
         
           digitalWrite(derecha, 1);
         }
@@ -65,11 +80,23 @@ void loop() {
     }
     if(rsw35 == 0 && rsw34 == 1){
       while(veces < 3){
+        int rsw36 = digitalRead(sw36);
+        while(rsw36){
+        pausa();
+      }
         while(digitalRead(s3) == 0){
+          int rsw36 = digitalRead(sw36);
+          while(rsw36){
+        pausa();
+      }
           digitalWrite(izquierda, 1);
         }
         digitalWrite(izquierda, 0);
         while(digitalRead(s2) == 0){
+          int rsw36 = digitalRead(sw36);
+          while(rsw36){
+        pausa();
+      }
           digitalWrite(derecha, 1);
         }
         digitalWrite(derecha, 0);
@@ -128,8 +155,5 @@ void loop() {
   
     
   } 
-
-  
-
 
 
