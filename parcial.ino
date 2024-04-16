@@ -14,6 +14,9 @@ int veces = 0;
 int veces2 = 0;
 bool flag = false;
 int izq = 0, der = 0;
+unsigned long i_tiempo = millis();
+unsigned long f_tiempo = millis();
+unsigned long total_tiempo = millis();
 
 
 
@@ -106,7 +109,7 @@ void loop() {
     } 
     if(rsw35 == 1 && rsw34 == 0){
       bool flag1, flag3, flag4 = false;
-      unsigned long i_tiempo = millis();
+      i_tiempo = millis();
       while(veces2 < 1){
         if(digitalRead(s4) == 1){
           while(digitalRead(s2) == 0){
@@ -119,6 +122,10 @@ void loop() {
             }
             digitalWrite(izquierda, 0);
           }
+          f_tiempo = millis();
+          total_tiempo = f_tiempo - i_tiempo;
+          Serial.println(total_tiempo);
+
         }
         if(digitalRead(s3) == 1){
           while(digitalRead(s2) == 0){
@@ -131,6 +138,9 @@ void loop() {
             }
             digitalWrite(izquierda, 0);
           }
+          f_tiempo = millis();
+          total_tiempo = f_tiempo - i_tiempo;
+          Serial.println(total_tiempo);
         }
         if(digitalRead(s1) == 1){
           while(digitalRead(s2) == 0){
@@ -143,6 +153,9 @@ void loop() {
             }
             digitalWrite(derecha, 0);
           }
+          f_tiempo = millis();
+          total_tiempo = f_tiempo - i_tiempo;
+          Serial.println(total_tiempo);
         }
         veces2 = veces2 +1;
       }
@@ -152,6 +165,9 @@ void loop() {
     if(rsw35 == 1 && rsw34 == 1){
       Serial.println("ERROR");
     }
+  }
+  
+    
   }
   
     
