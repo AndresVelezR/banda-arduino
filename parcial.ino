@@ -12,6 +12,10 @@
 #define sw34 34
 int veces = 0;
 int veces2 = 0;
+bool flag = false;
+int izq = 0, der = 0;
+
+
 
 void pausa(){
 
@@ -46,61 +50,58 @@ void loop() {
   if(start == 1){
     int rsw35 = digitalRead(sw35);
     int rsw34 = digitalRead(sw34);
+    
+
    
     if(rsw35 == 0 && rsw34 == 0){
-      int rsw36 = digitalRead(sw36);
-      while(rsw36){
-        pausa();
-      }
        
       while(true){
-        int rsw36 = digitalRead(sw36);
-        while(rsw36){
-        pausa();
-      }
 
-        while(digitalRead(s3) == 0){
-          int rsw36 = digitalRead(sw36);
-          while(rsw36){
-        pausa();
-      }
+        while((digitalRead(s3) == 0) && (digitalRead(sw36) == 0) && (flag == false)){
+      
           digitalWrite(izquierda, 1);
         }
+        if(digitalRead(s3)){
         digitalWrite(izquierda, 0);
-        while(digitalRead(s1) == 0){
-          int rsw36 = digitalRead(sw36);
-          while(rsw36){
-        pausa();
-      }
+        flag = true;
+        } else {
+          digitalWrite(izquierda, 0);
+        }
+        while(digitalRead(s1) == 0 && (digitalRead(sw36) == 0) && (flag == true)){
         
           digitalWrite(derecha, 1);
         }
+        if(digitalRead(s1)){
         digitalWrite(derecha, 0);
+        veces = veces + 1;
+        flag = false;
+        } else {
+          digitalWrite(derecha, 0);
+        }
       }
     }
     if(rsw35 == 0 && rsw34 == 1){
       while(veces < 3){
-        int rsw36 = digitalRead(sw36);
-        while(rsw36){
-        pausa();
-      }
-        while(digitalRead(s3) == 0){
-          int rsw36 = digitalRead(sw36);
-          while(rsw36){
-        pausa();
-      }
+        while((digitalRead(s3) == 0) && (digitalRead(sw36) == 0) && (flag == false)){
           digitalWrite(izquierda, 1);
         }
+        if(digitalRead(s3)){
         digitalWrite(izquierda, 0);
-        while(digitalRead(s2) == 0){
-          int rsw36 = digitalRead(sw36);
-          while(rsw36){
-        pausa();
-      }
+        flag = true;
+        } else {
+          digitalWrite(izquierda, 0);
+        }
+        while(digitalRead(s2) == 0 && (digitalRead(sw36) == 0) && (flag == true)){
+        
           digitalWrite(derecha, 1);
         }
+        if(digitalRead(s2)){
         digitalWrite(derecha, 0);
         veces = veces + 1;
+        flag = false;
+        } else {
+          digitalWrite(derecha, 0);
+        }
     }
     } 
     if(rsw35 == 1 && rsw34 == 0){
@@ -154,6 +155,6 @@ void loop() {
   }
   
     
-  } 
+  }
 
 
