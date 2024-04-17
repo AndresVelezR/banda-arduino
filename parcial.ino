@@ -76,7 +76,7 @@ void loop() {
         }
         if(digitalRead(s1)){
         digitalWrite(derecha, 0);
-        veces = veces + 1;
+        //veces = veces + 1;
         flag = false;
         } else {
           digitalWrite(derecha, 0);
